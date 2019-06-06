@@ -52,6 +52,10 @@ class Tokenizer {
         current++
         continue;
       }
+
+      if(regexer.isNumber(char)) {
+        let value = '';
+      }
     }
   }
 }
