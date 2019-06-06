@@ -1,4 +1,19 @@
 
+const patterns = {
+  whitespaceRegEx: /\s/,
+  numberRegex: /[0-9]/,
+}
+
+const regexer = {
+  isWhiteSpace: (char) => {
+    return patterms.whitespaceRegEx.test(char)
+  },
+
+  isNumber: (char) => {
+    return patterns.numberRegex.test(char)
+  }
+}
+
 
 class Tokenizer {
   constructor(input) {
@@ -20,6 +35,22 @@ class Tokenizer {
           type: 'paren',
           value: '('
         })
+        current++
+        continue;
+      }
+
+      if(char === ')') {
+        tokens.push({
+          type: 'paren',
+          value: ')',
+        })
+        current++
+        continue;
+      }
+
+      if(regexer.isWhiteSpace(char)) {
+        current++
+        continue;
       }
     }
   }
